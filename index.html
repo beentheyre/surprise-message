@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message</title>
+    <style>
+        /* Ensures the page takes up the full viewport height and removes margins */
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            overflow: hidden; /* Hide scroll bars */
+            transition: background-color 1s ease-in-out;
+        }
+
+        /* Styling for the text container */
+        .message-container {
+            text-align: center;
+            font-size: 10vw; /* Responsive font size */
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 0.5s ease-out;
+            transform: scale(0.9);
+        }
+
+        .visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="message" class="message-container">
+        surprise
+    </div>
+
+    <script>
+        // Display the first message
+        setTimeout(() => {
+            document.getElementById('message').classList.add('visible');
+        }, 100); // Small delay to trigger the transition effect
+
+        // Change the message and styling after 3 seconds
+        setTimeout(() => {
+            const messageContainer = document.getElementById('message');
+            messageContainer.classList.remove('visible'); // Fade out 'surprise'
+
+            // Wait for fade out to complete before changing text
+            setTimeout(() => {
+                messageContainer.textContent = 'love you';
+                messageContainer.style.color = 'hotpink'; // Change color for "love you"
+                document.body.style.backgroundColor = '#1a1a1a'; // Subtle background change
+                messageContainer.classList.add('visible'); // Fade in 'love you'
+            }, 1000); // Matches the CSS transition duration
+
+        }, 3000); // 3 seconds for "surprise"
+    </script>
+
+</body>
+</html>
