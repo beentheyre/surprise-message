@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick a Balloon!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0ff;
+            margin: 0;
+            flex-direction: column;
+        }
+        .balloon-container {
+            display: flex;
+            gap: 50px; /* Space between balloons */
+        }
+        .balloon {
+            font-size: 20vw; /* Very large emoji size */
+            cursor: pointer; /* Changes cursor to a hand to show it's clickable */
+            transition: transform 0.2s;
+            text-decoration: none; /* Emojis are treated as text links */
+        }
+        .balloon:hover {
+            transform: scale(1.1);
+        }
+        .instructions {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="instructions">Click on a balloon to see your fate!</div>
+
+    <div class="balloon-container">
+        <!-- Pink Balloon (selectable, unlucky message) -->
+        <a href="#" class="balloon" onclick="showMessage('unlucky'); return false;">
+            🎈
+        </a>
+
+        <!-- Purple Balloon (selectable, won 100 message) -->
+        <a href="#" class="balloon" onclick="showMessage('won'); return false;">
+            💜
+        </a>
+    </div>
+
+    <script>
+        function showMessage(result) {
+            if (result === 'unlucky') {
+                // Displays a browser alert box
+                alert("Sorry, unlucky!");
+            } else if (result === 'won') {
+                // Displays a different browser alert box
+                alert("🎉 Congratulations! You won 100! 🎉");
+            }
+        }
+    </script>
+
+</body>
+</html>
